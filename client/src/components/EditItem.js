@@ -29,10 +29,8 @@ const EditItem = (props) => {
    }
 
    const onCancel = () => {
-
+      navigate("/");
    }
-
-
 
    return (
       <div className="item-form">
