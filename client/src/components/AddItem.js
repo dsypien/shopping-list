@@ -4,13 +4,15 @@ import Dropdown from "./InputFields/Dropdown";
 import { Button } from "@mui/material";
 import { connect } from "react-redux";
 import { createShoppingListItem } from "../actions/shoppingList";
+import { Navigate } from "react-router-dom";
 
 class AddItem extends Component {
    state = {
       id: this.props.id || null,
       itemName: this.props.itemName || "",
       description: this.props.description || "",
-      quantity: this.props.quantity || ""
+      quantity: this.props.quantity || "",
+      navigateDashboard : false
    }
 
    quantityOptions = [{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}]
@@ -33,13 +35,19 @@ class AddItem extends Component {
          description: this.state.description,
          quantity: this.state.quantity
       }));
+      this.setState({navigateDashboard: true});
    }
 
    onCancel = () => {
       // TODO: navigate back to dashboard  
+      this.setState({navigateDashboard: true});
    }
 
    render () {
+      if(this.state.navigateDashboard){
+         return <Navigate to="/" />;
+      }
+
       return (
          <div className="item-form">
             <h2>Add an Item</h2>
