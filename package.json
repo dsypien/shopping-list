@@ -20,5 +20,8 @@
   "homepage": "https://github.com/dsypien/shopping-list#readme",
   "dependencies": {
     "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "create-react-app": "^5.0.0"
   }
 }
