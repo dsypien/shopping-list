@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "@mui/material";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function EmptyShoppingList () {
    const navigate = useNavigate();
