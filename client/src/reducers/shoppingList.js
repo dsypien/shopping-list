@@ -10,7 +10,7 @@ export default function shoppingListReducer (state = {}, action) {
          return {
             ...state,
             [action.id] : {
-               id: [action.id],
+               id: action.id,
                ...action.shoppingListItem
             }
          }
