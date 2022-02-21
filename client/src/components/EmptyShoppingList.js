@@ -1,20 +1,23 @@
 import React, { Component } from "react";
 import { Button } from "@mui/material";
+import { Navigate, useNavigate } from "react-router-dom";
 
-class EmptyShoppingList extends Component {
-   render () {
-      return (
-         <>
-            <h3>Your shopping list is empty :(</h3>)
-            <Button 
-               size="large"
-               variant="contained"
-               onClick={this.onAddItem}>
-               Add your first Item
-            </Button>
-         </>
-      )
+export default function EmptyShoppingList () {
+   const navigate = useNavigate();
+
+   const onAddItem = () => {
+      navigate("/add");
    }
-}
 
-export default EmptyShoppingList;
+   return (
+      <>
+         <h3>Your shopping list is empty :(</h3>)
+         <Button 
+            size="large"
+            variant="contained"
+            onClick={onAddItem}>
+            Add your first Item
+         </Button>
+      </>
+   )
+}
