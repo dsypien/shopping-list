@@ -10,8 +10,7 @@ class AddItem extends Component {
       id: this.props.id || null,
       itemName: this.props.itemName || "",
       description: this.props.description || "",
-      quantity: this.props.quantity || "",
-      didPurchase: this.props.didPurchase || false
+      quantity: this.props.quantity || ""
    }
 
    quantityOptions = [{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}]
@@ -29,7 +28,11 @@ class AddItem extends Component {
    }
 
    onAddItem = () => {
-      this.props.dispatch(createShoppingListItem(this.state));
+      this.props.dispatch(createShoppingListItem({
+         itemName: this.state.itemName,
+         description: this.state.description,
+         quantity: this.state.quantity
+      }));
    }
 
    onCancel = () => {
