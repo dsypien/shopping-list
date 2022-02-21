@@ -19,3 +19,54 @@ code {
 .item-form input {
   width:100%;
 }
+
+.shopping-list-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 0.25rem;
+}
+
+.mb-3 {
+  margin-bottom: 1rem!important;
+}
+
+.ml-1 {
+  padding-left: .33rem!important;
+}
+
+.shopping-list {
+  margin: 20px
+}
+
+.shopping-list-body {
+  flex-grow: 1;
+  margin: 0 15px;
+  flex: 1 1 auto;
+  padding: 0 1rem;
+}
+
+.left-container {
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.right-container {
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+}
+
+.flex-container {
+  display: flex;
+  margin: 12px;
+}
