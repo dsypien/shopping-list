@@ -2,9 +2,21 @@ import React from "react";
 import { Checkbox } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 
 const ShoppingListItem = (props) => {
    const { item } = props;
+   const navigate = useNavigate();
+
+   const onDeleteItem = () => {
+      // TODO: delete
+   }
+
+   const onEditItem = () => {
+      navigate(`/edit/${item.id}`);
+   }
 
    return (
       <div className="shopping-list-item mb-3">
@@ -19,7 +31,7 @@ const ShoppingListItem = (props) => {
                <span>{item.description}</span>                        
             </div>
             <div className="right-container">
-               <EditIcon />
+               <EditIcon onClick={onEditItem}/>
                <DeleteIcon className="ml-1"/>
             </div>
          </div>
@@ -27,4 +39,4 @@ const ShoppingListItem = (props) => {
    )
 }
 
-export default ShoppingListItem;
+export default connect()(ShoppingListItem);
