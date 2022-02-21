@@ -12,8 +12,6 @@ const ShoppingList = (props) => {
       navigate("/add");
    }
 
-
-
    return (
       <>
          <h2>Shopping List</h2>
@@ -28,7 +26,7 @@ const ShoppingList = (props) => {
          </div>
          <div className="shopping-list">               
             {list && list.map(item => (
-               <ShoppingListItem item={item} />
+               <ShoppingListItem key={item.id} item={item} />
             ))}
          </div>         
       </>
