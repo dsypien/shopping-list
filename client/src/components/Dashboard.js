@@ -17,9 +17,7 @@ const Dashboard = (props) => {
 
    return (
       <div className="dashboard">
-         Dashboard
          {renderDashboard()}
-         <AddItem />
       </div>
    )
 }
