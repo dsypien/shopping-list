@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { Checkbox } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import ShoppingListItem from "./ShoppingListItem";
 
 const ShoppingList = (props) => {   
    const {list} = props;
@@ -13,6 +11,8 @@ const ShoppingList = (props) => {
    const onAddItem = () => {
       navigate("/add");
    }
+
+
 
    return (
       <>
@@ -28,23 +28,7 @@ const ShoppingList = (props) => {
          </div>
          <div className="shopping-list">               
             {list && list.map(item => (
-               <div className="shopping-list-item mb-3">
-                  <div className="flex-container" key={item.id}>
-                     <div className="left-container"> 
-                        <Checkbox style={{padding: "12px"}} />
-                     </div>
-                     <div className="shopping-list-body">
-                        <div>
-                           <h3>{item.itemName} ({item.quantity})</h3>
-                        </div>
-                        <span>{item.description}</span>                        
-                     </div>
-                     <div className="right-container">
-                        <EditIcon />
-                        <DeleteIcon className="ml-1"/>
-                     </div>
-                  </div>
-               </div>
+               <ShoppingListItem item={item} />
             ))}
          </div>         
       </>
