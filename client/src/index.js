@@ -4,11 +4,11 @@ import './index.css';
 import App from './App';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
-import shoppingListReducer from './reducers/shoppingList';
+import reducers from './reducers';
 import logger from 'redux-logger';
 
 const store = createStore(
-  shoppingListReducer,
+  reducers,
   applyMiddleware(logger)
 )
 
