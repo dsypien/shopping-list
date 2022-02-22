@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { TextField } from "@mui/material";
 import Dropdown from "./InputFields/Dropdown";
-import { Checkbox } from "@mui/material";
+import { Checkbox, FormControlLabel } from "@mui/material";
 import { Button } from "@mui/material";
 import { connect } from "react-redux";
 import { handleEditItem } from "../actions/shoppingList";
@@ -62,9 +62,12 @@ const EditItem = (props) => {
             value={quantity}
             options={quantityOptions}
             handleChange={(e) => setQuantity(e.target.value)}/>
-         <Checkbox 
-            checked={purchased}
-            onClick={(e) => setPurchased(e.target.checked)}/>
+         <FormControlLabel 
+            name="purchased"
+            label="Purchased"
+            control={<Checkbox
+               onClick={(e) => setPurchased(e.target.checked)}
+               checked={purchased}/>}/>
          <div style={{display: "flex", justifyContent: "space-evenly", margin: "25px"}}>
             <Button 
                size="large"
