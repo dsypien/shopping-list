@@ -1,38 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Checkbox } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import DeleteItemDialog from "./DeleteItemDialog";
+import { toggleItemPurchased } from "../actions/shoppingList";
 
 
-const ShoppingListItem = (props) => {
+const ShoppingListItem = (props) => {   
    const { item } = props;
+   const [purchased, setPurchased] = useState(item.purchased || false);
    const navigate = useNavigate();
-
-   const onDeleteItem = () => {
-      // TODO: delete
-   }
 
    const onEditItem = () => {
       navigate(`/edit/${item.id}`);
    }
 
-   return (
-      <div className="shopping-list-item mb-3">
+   const onTogglePurchase = () => {  
+      setPurchased(prevPurchased => !prevPurchased)
+      props.dispatch(toggleItemPurchased(item.id, item.purchased));
+   }
+
+   if(item === null){
+      return <p>This item does not exist.</p>
+   }
+
+   return (      
+      <div className={`shopping-list-item mb-3 ${item.purchased ? 'purchased' : ''}`}>
          <div className="flex-container" key={item.id}>
             <div className="left-container"> 
-               <Checkbox style={{padding: "12px"}} />
+               <Checkbox 
+                  checked={purchased}
+                  onClick={() => {onTogglePurchase()}}
+                  style={{padding: "12px"}} />
             </div>
             <div className="shopping-list-body">
-               <div>
-                  <h3>{item.itemName} ({item.quantity})</h3>
-               </div>
-               <span>{item.description}</span>                        
+               <div className="item-name">{item.itemName} ({item.quantity})</div>
+               <div className="item-description">{item.description}</div>                        
             </div>
             <div className="right-container">
-               <EditIcon onClick={onEditItem}/>
-               <DeleteIcon className="ml-1"/>
+               <EditIcon onClick={() => {onEditItem()}}/>
+               <DeleteItemDialog id={item.id}/>
             </div>
          </div>
       </div>
