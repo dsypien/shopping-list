@@ -8,11 +8,23 @@ import { FormHelperText } from '@mui/material';
 export default function Dropdown(props) {
   const { name, label, value, options, helperText, handleChange } = props;
 
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        width: "100%",
+        maxWidth: "500px",
+        margin: "0px -5px"
+      },
+    },
+  };
+
   return (
     <div>
-      <FormControl sx={{m: 0, width:"100%", minWidth: "200px", margin:"10px"}}>
-        <InputLabel id="demo-simple-select-autowidth-label">{label}</InputLabel>
+      <FormControl sx={{m: 0, width:"100%", minWidth: "500px", margin:"10px"}}>
+        <InputLabel 
+          id="demo-simple-select-autowidth-label">{label}</InputLabel>
         <Select
+          id="demo-simple-select-helper-label"
           defaultValue=""
           style={{width:"100%"}}
           value={value}
@@ -20,13 +32,10 @@ export default function Dropdown(props) {
           onChange={handleChange}
           autoWidth
           label={label}
+          MenuProps={MenuProps}
         >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
           {options.map( option => (
                <MenuItem 
-                  style={{width: "100%"}}
                   key={option.value}
                   value={option.value}>
                   {option.text}      

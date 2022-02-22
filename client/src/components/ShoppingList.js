@@ -14,7 +14,6 @@ const ShoppingList = (props) => {
 
    return (
       <>
-         <h2>Shopping List</h2>
          <div style={{display: "flex", justifyContent: "space-between", margin: "25px"}}>
             <h3>Your items</h3>
             <Button 
