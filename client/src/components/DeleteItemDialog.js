@@ -7,7 +7,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { connect } from 'react-redux';
-import { deleteShoppingListItem } from '../actions/shoppingList';
+import { handleDeleteItem } from '../actions/shoppingList';
 
 const DeleteItemDialog = (props) => {
    const [open, setOpen] = React.useState(false);
@@ -22,7 +22,7 @@ const DeleteItemDialog = (props) => {
    };
 
    const handleDelete = () => {
-      props.dispatch(deleteShoppingListItem(id));
+      props.dispatch(handleDeleteItem(id));
       setOpen(false);
    }
 

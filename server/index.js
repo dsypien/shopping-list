@@ -26,7 +26,7 @@ app.post('/shoppingList', (req, res) => {
 app.get('/shoppingList', (req, res) => {
    ShoppingList.findAll()
       .then( list => {
-         res.json(list);
+         res.send(list);
       })
       .catch( err => {
          console.log(`Error: retrieving shopping list. ${JSON.stringify(err)}`);
@@ -48,7 +48,7 @@ app.put('/shoppingList/:id', (req, res) => {
             id: id
       }}
    ).then( list => {
-      res.json(list);
+      res.send(list);
    }).catch( err => {
       console.log(`Error: updating item ${id}. ${JSON.stringify(err)}`);
    })
@@ -61,7 +61,10 @@ app.delete('/shoppingList/:id', (req, res) => {
       where: {
          id: id
       }
-   }).catch( err => {
+   }).then( () => {
+      res.status(200).end();
+   })
+   .catch( err => {
       console.log(`Error: deleting item ${id}. ${JSON.stringify(err)}`);
    })
 });

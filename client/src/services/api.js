@@ -27,3 +27,17 @@ export function editListItem (item) {
          })
    });
 }
+
+export function deleteListItem (id) {
+   return new Promise ( (res, rej) => {
+      axios.delete(`http://localhost:3001/shoppinglist/${id}`)
+         .then( apiRes => {
+            res(apiRes);
+         })
+         .catch( err => {
+            console.log("Error deleting list item ")
+            console.log(err);
+            rej(err);
+         })
+   });
+}
