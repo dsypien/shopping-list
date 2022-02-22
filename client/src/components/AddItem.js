@@ -33,7 +33,8 @@ class AddItem extends Component {
       this.props.dispatch(createShoppingListItem({
          itemName: this.state.itemName,
          description: this.state.description,
-         quantity: this.state.quantity
+         quantity: this.state.quantity,
+         purchased: false
       }));
       this.setState({navigateDashboard: true});
    }
