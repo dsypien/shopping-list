@@ -11,8 +11,7 @@ export default function shoppingListReducer (state = {}, action) {
       case CREATE_SHOPPING_LIST_ITEM:
          return {
             ...state,
-            [action.id] : {
-               id: action.id,
+            [action.shoppingListItem.id] : {
                ...action.shoppingListItem
             }
          }

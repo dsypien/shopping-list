@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import Dropdown from "./InputFields/Dropdown";
 import { Button } from "@mui/material";
 import { connect } from "react-redux";
-import { createShoppingListItem } from "../actions/shoppingList";
+import { handleAddItem } from "../actions/shoppingList";
 import { Navigate } from "react-router-dom";
 
 class AddItem extends Component {
@@ -30,17 +30,19 @@ class AddItem extends Component {
    }
 
    onAddItem = () => {
-      this.props.dispatch(createShoppingListItem({
-         itemName: this.state.itemName,
-         description: this.state.description,
-         quantity: this.state.quantity,
+      const { itemName, description, quantity, purchased } = this.state;
+
+      this.props.dispatch(handleAddItem({
+         itemName,
+         description,
+         quantity,
          purchased: false
       }));
+
       this.setState({navigateDashboard: true});
    }
 
    onCancel = () => {
-      // TODO: navigate back to dashboard  
       this.setState({navigateDashboard: true});
    }
 
