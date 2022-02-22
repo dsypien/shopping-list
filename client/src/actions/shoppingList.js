@@ -22,10 +22,11 @@ export function handleAddItem (shoppingListItem) {
    }
 }
 
-export function retrieveShoppingList (shoppingList) {
+export function retrieveShoppingList (shoppingList, pagination) {
    return {
       type: RETRIEVE_SHOPPING_LIST,
       shoppingList,
+      pagination,
    };
 }
 
@@ -34,12 +35,9 @@ export function handleGetShoppingList () {
       return getShoppingList()
          .then( res => {
             const { 
-               count,
-               currentPage, 
-               pageSize,
-               totalPages,
+               pagination,
                rows,} = res.data;
-            dispatch(retrieveShoppingList(rows));
+            dispatch(retrieveShoppingList(rows, pagination));
          })
    }
 }

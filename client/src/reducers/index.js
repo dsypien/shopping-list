@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import authedUserReducer from "./authedUser";
 import shoppingListReducer from "./shoppingList";
+import paginationReducer from "./pagination";
 
 export default combineReducers({
-   authedUser: authedUserReducer,
    shoppingList: shoppingListReducer,
+   pagination: paginationReducer
 })

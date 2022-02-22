@@ -32,12 +32,14 @@ app.get('/shoppingList', async (req, res) => {
       offset: page
    })
       .then( list => {
-         //res.send(list);
          res.json({
-            currentPage: page,
-            totalPages: Math.ceil(list.count/pageSize),
-            pageSize,
-            ...list,            
+            pagination: {
+               currentPage: page,
+               totalPages: Math.ceil(list.count/pageSize),
+               pageSize,
+               totalItems: list.count
+            },
+            rows: list.rows
          })
       })
       .catch( err => {
