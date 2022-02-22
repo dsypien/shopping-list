@@ -41,3 +41,17 @@ export function deleteListItem (id) {
          })
    });
 }
+
+export function getShoppingList () {
+   return new Promise( (res, rej) => {
+      axios.get("http://localhost:3001/shoppinglist")
+         .then( list => {
+            res(list);
+         })
+         .catch( err => {
+            console.log("Error retrieving shopping list ")
+            console.log(err);
+            rej(err);
+         })
+   })
+}

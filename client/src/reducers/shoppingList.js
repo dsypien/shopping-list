@@ -16,14 +16,14 @@ export default function shoppingListReducer (state = {}, action) {
             }
          }
       case RETRIEVE_SHOPPING_LIST:
-         return {
-            ...state,
-            ...action.shoppingList
-         }
+         return action.shoppingList.reduce( (reducer, item, idx) => { 
+            reducer[item.id] = action.shoppingList[idx];
+            return reducer;
+          }, {})
       case UPDATE_SHOPPING_LIST_ITEM:
          return {
             ...state,
-            [action.shoppingListItem.id]: {
+            [action.id]: {
                ...action.shoppingListItem
             }
          }
