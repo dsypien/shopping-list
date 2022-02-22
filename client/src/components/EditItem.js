@@ -11,9 +11,9 @@ const EditItem = (props) => {
    const { id } = useParams();
    const item = props.shoppingList[id];
    const navigate = useNavigate();
-   const [itemName, setItemName] = useState(item.itemName || "") 
-   const [description, setDescription] = useState(item.description || "") 
-   const [quantity, setQuantity] = useState(item.quantity || "")    
+   const [itemName, setItemName] = useState(item.itemName || ""); 
+   const [description, setDescription] = useState(item.description || ""); 
+   const [quantity, setQuantity] = useState(item.quantity || "");    
 
    const quantityOptions = [{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}];
 
