@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Checkbox } from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DeleteItemDialog from "./DeleteItemDialog";
-import { toggleItemPurchased } from "../actions/shoppingList";
+import { handleEditItem } from "../actions/shoppingList";
 
 
 const ShoppingListItem = (props) => {   
@@ -17,9 +17,20 @@ const ShoppingListItem = (props) => {
       navigate(`/edit/${item.id}`);
    }
 
+   useEffect( () => {
+      setPurchased(props.item.purchased)
+   }, [props.item.purchased])
+
    const onTogglePurchase = () => {  
-      setPurchased(prevPurchased => !prevPurchased)
-      props.dispatch(toggleItemPurchased(item.id, item.purchased));
+      //setPurchased(prevPurchased => !prevPurchased)
+      const { id, itemName, description, quantity } = item;
+      props.dispatch(handleEditItem({
+         id,
+         itemName,
+         description,
+         quantity,
+         purchased: !purchased
+      }))
    }
 
    if(item === null){
