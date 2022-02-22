@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/dsypien/shopping-list#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "sqlite3": "^5.0.2"
   },
