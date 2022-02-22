@@ -9,38 +9,59 @@ const app = express();
 
 app.use(express.json());
 
-// POST /shoppinglist
 app.post('/shoppingList', (req, res) => {
    const { itemName, description, quantity, purchased } = req.body;
    
    ShoppingList.create({ itemName, description, quantity, purchased })
-      .then((list) => {
+      .then( list => {
          res.send(list);
       })
-      .catch((err) => {
+      .catch( err => {
          console.log(`Error: inserting shopping list. ${JSON.stringify(err)}`);
       })
 });
 
-// GET /api/shoppinglist
 app.get('/shoppingList', (req, res) => {
    ShoppingList.findAll()
       .then( list => {
          res.json(list);
       })
-      .catch((err) => {
+      .catch( err => {
          console.log(`Error: retrieving shopping list. ${JSON.stringify(err)}`);
       });
 });
 
-// PUT /api/shoppinglist/:id (can also use this for toggling)
 app.put('/shoppingList/:id', (req, res) => {
-   const id = parseInt(req.params.id);
+   const id = req.params.id;
+   const { itemName, description, quantity, purchased } = req.body;
+
+   ShoppingList.update(
+      {
+         itemName: itemName,
+         description: description, 
+         quantity: quantity, 
+         purchased: purchased},
+      {
+         where: {
+            id: id
+      }}
+   ).then( list => {
+      res.json(list);
+   }).catch( err => {
+      console.log(`Error: updating item ${id}. ${JSON.stringify(err)}`);
+   })
 });
 
-// DELETE /api/shoppinglist/:id
 app.delete('/shoppingList/:id', (req, res) => {
-   const id = parseInt(req.params.id);
+   const id = req.params.id;
+
+   ShoppingList.destroy({
+      where: {
+         id: id
+      }
+   }).catch( err => {
+      console.log(`Error: deleting item ${id}. ${JSON.stringify(err)}`);
+   })
 });
 
 app.listen(PORT, () => {
