@@ -23,10 +23,22 @@ app.post('/shoppingList', (req, res) => {
       })
 });
 
-app.get('/shoppingList', (req, res) => {
-   ShoppingList.findAll()
+app.get('/shoppingList', async (req, res) => {
+   const pageSize = 3;
+   let page = parseInt(req.query.page) || 0;
+
+   ShoppingList.findAndCountAll({
+      limit: pageSize,
+      offset: page
+   })
       .then( list => {
-         res.send(list);
+         //res.send(list);
+         res.json({
+            currentPage: page,
+            totalPages: Math.ceil(list.count/pageSize),
+            pageSize,
+            ...list,            
+         })
       })
       .catch( err => {
          console.log(`Error: retrieving shopping list. ${JSON.stringify(err)}`);

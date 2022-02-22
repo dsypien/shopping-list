@@ -32,8 +32,14 @@ export function retrieveShoppingList (shoppingList) {
 export function handleGetShoppingList () {
    return (dispatch) => {
       return getShoppingList()
-         .then( ({data}) => {
-            dispatch(retrieveShoppingList(data));
+         .then( res => {
+            const { 
+               count,
+               currentPage, 
+               pageSize,
+               totalPages,
+               rows,} = res.data;
+            dispatch(retrieveShoppingList(rows));
          })
    }
 }
