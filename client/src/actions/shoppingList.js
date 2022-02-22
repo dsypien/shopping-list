@@ -1,4 +1,4 @@
-import { addListItem } from "../services/api";
+import { addListItem, editListItem } from "../services/api";
 export const CREATE_SHOPPING_LIST_ITEM = "CREATE_SHOPPING_LIST_ITEM";
 export const RETRIEVE_SHOPPING_LIST = "CREATE_SHOPPING_LIST";
 export const UPDATE_SHOPPING_LIST_ITEM = "UPDATE_SHOPPING_LIST_ITEM";
@@ -33,6 +33,15 @@ export function updateShoppingListItem (shoppingListItem) {
    return {
       type: UPDATE_SHOPPING_LIST_ITEM,
       shoppingListItem,
+   }
+}
+
+export function handleEditItem (shoppingListItem) {
+   return (dispatch) => {
+      return editListItem(shoppingListItem)
+         .then( item => {
+            dispatch(updateShoppingListItem(shoppingListItem));
+         })
    }
 }
 

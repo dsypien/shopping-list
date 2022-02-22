@@ -4,8 +4,6 @@ export function addListItem (item) {
    return new Promise( (res, rej) => {
       axios.post("http://localhost:3001/shoppinglist", item)
       .then( apiRes => {
-         console.log(apiRes);
-         console.log(apiRes.data);
          res(apiRes);
       })
       .catch( err => {
@@ -13,5 +11,19 @@ export function addListItem (item) {
          console.log(err);
          rej(err);
       })
-   })   
+   });   
 } 
+
+export function editListItem (item) {
+   return new Promise ( (res, rej) => {
+      axios.put(`http://localhost:3001/shoppinglist/${item.id}`, item)
+         .then( apiRes => {
+            res(apiRes);
+         })
+         .catch( err => {
+            console.log("Error updating list item ")
+            console.log(err);
+            rej(err);
+         })
+   });
+}

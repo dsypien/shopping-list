@@ -1,9 +1,10 @@
 import React, { Component, useEffect } from "react";
 import { TextField } from "@mui/material";
 import Dropdown from "./InputFields/Dropdown";
+import { Checkbox } from "@mui/material";
 import { Button } from "@mui/material";
 import { connect } from "react-redux";
-import { updateShoppingListItem } from "../actions/shoppingList";
+import { handleEditItem } from "../actions/shoppingList";
 import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -13,16 +14,18 @@ const EditItem = (props) => {
    const navigate = useNavigate();
    const [itemName, setItemName] = useState(item.itemName || ""); 
    const [description, setDescription] = useState(item.description || ""); 
-   const [quantity, setQuantity] = useState(item.quantity || "");    
+   const [quantity, setQuantity] = useState(item.quantity || ""); 
+   const [purchased, setPurchased] = useState(item.purchased || false);
 
    const quantityOptions = [{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}];
 
    const onSaveItem = () => {
-      props.dispatch(updateShoppingListItem({
+      props.dispatch(handleEditItem({
          id,
-         itemName: itemName,
-         description: description,
-         quantity: quantity
+         itemName,
+         description,
+         quantity,
+         purchased,
       }));
 
       navigate("/");
@@ -58,8 +61,10 @@ const EditItem = (props) => {
             label="How many?"
             value={quantity}
             options={quantityOptions}
-            handleChange={(e) => setQuantity(e.target.value)}
-         />
+            handleChange={(e) => setQuantity(e.target.value)}/>
+         <Checkbox 
+            checked={purchased}
+            onClick={(e) => setPurchased(e.target.checked)}/>
          <div style={{display: "flex", justifyContent: "space-evenly", margin: "25px"}}>
             <Button 
                size="large"
