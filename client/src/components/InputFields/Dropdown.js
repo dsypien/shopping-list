@@ -13,14 +13,14 @@ export default function Dropdown(props) {
       style: {
         width: "100%",
         maxWidth: "500px",
-        margin: "0px -5px"
+        margin: "0px"
       },
     },
   };
 
   return (
     <div>
-      <FormControl sx={{m: 0, width:"100%", minWidth: "500px", margin:"10px"}}>
+      <FormControl sx={{m: 0, width:"100%", minWidth: "500px", margin:"10px 0px"}}>
         <InputLabel 
           id="demo-simple-select-autowidth-label">{label}</InputLabel>
         <Select

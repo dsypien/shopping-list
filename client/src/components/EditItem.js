@@ -37,9 +37,10 @@ const EditItem = (props) => {
 
    return (
       <div className="item-form">
-         <h2>Edit an Item</h2>
+         <div className="item-form-h3">Edit an Item</div>
+         <div className="item-form-h4">Edit your item below.</div>
          <TextField
-            style={{width:"100%", margin: "10px"}}
+            style={{width:"100%", margin: "10px 0px"}}
             name="itemName"
             label="Item Name"
             value={itemName}
@@ -47,7 +48,7 @@ const EditItem = (props) => {
             variant="outlined"
             autoComplete="off" />
          <TextField
-            style={{width:"100%", margin: "10px"}}
+            style={{width:"100%", margin: "10px 0px"}}
             name="description"
             label="Description"
             multiline={true}
@@ -68,7 +69,7 @@ const EditItem = (props) => {
             control={<Checkbox
                onClick={(e) => setPurchased(e.target.checked)}
                checked={purchased}/>}/>
-         <div style={{display: "flex", justifyContent: "space-evenly", margin: "25px"}}>
+         <div className="btn-container-right">
             <Button 
                size="large"
                variant="outlined"

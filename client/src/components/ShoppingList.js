@@ -26,10 +26,9 @@ const ShoppingList = (props) => {
 
    return (
       <>
-         <div style={{display: "flex", justifyContent: "space-between", margin: "25px"}}>
-            <h3>Your items</h3>
+         <div className="shopping-list-header">
+            <span>Your Items</span>
             <Button 
-               size="small"
                variant="contained"
                onClick={onAddItem}>
                Add Item

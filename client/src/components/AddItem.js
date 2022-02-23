@@ -53,9 +53,10 @@ class AddItem extends Component {
 
       return (
          <div className="item-form">
-            <h2>Add an Item</h2>
+            <div className="item-form-h3">Add an Item</div>
+            <div className="item-form-h4">Add your new item below.</div>
             <TextField
-               style={{width:"100%", margin: "10px"}}
+               style={{width:"100%", margin: "10px 0px"}}
                name="itemName"
                label="Item Name"
                value={this.state.itemName}
@@ -63,7 +64,7 @@ class AddItem extends Component {
                variant="outlined"
                autoComplete="off" />
             <TextField
-               style={{width:"100%", margin: "10px"}}
+               style={{width:"100%", margin: "10px 0px"}}
                name="description"
                label="Description"
                multiline={true}
@@ -79,7 +80,7 @@ class AddItem extends Component {
                options={this.quantityOptions}
                handleChange={(e) => this.setInputValue(e)}
             />
-            <div style={{display: "flex", justifyContent: "space-evenly", margin: "25px"}}>
+            <div className="btn-container-right">
                <Button 
                   size="large"
                   variant="outlined"

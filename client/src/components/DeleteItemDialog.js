@@ -30,33 +30,32 @@ const DeleteItemDialog = (props) => {
       <div>
          <DeleteOutlineOutlinedIcon onClick={handleClickOpen} />
          <Dialog
-         open={open}
-         onClose={handleClose}
-         aria-labelledby="alert-dialog-title"
-         aria-describedby="alert-dialog-description"
-         >
-         <DialogTitle id="alert-dialog-title">
-            {"Delete Item?"}
-         </DialogTitle>
-         <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-            Are you sure you want to delete this item?  This cannot be undone.
-            </DialogContentText>
-         </DialogContent>
-         <DialogActions>
-            <Button
-               size="large"
-               variant="outlined" 
-               onClick={handleClose}>
-                  Cancel
-            </Button>
-            <Button 
-               size="large"
-               variant="contained"
-               onClick={handleDelete} autoFocus>
-               Delete
-            </Button>
-         </DialogActions>
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description">
+            <DialogTitle id="alert-dialog-title">
+               {"Delete Item?"}
+            </DialogTitle>
+            <DialogContent>
+               <DialogContentText id="alert-dialog-description">
+               Are you sure you want to delete this item?  This cannot be undone.
+               </DialogContentText>
+            </DialogContent>
+            <DialogActions id="alert-dialog-actions">
+               <Button
+                  size="large"
+                  variant="outlined" 
+                  onClick={handleClose}>
+                     Cancel
+               </Button>
+               <Button 
+                  size="large"
+                  variant="contained"
+                  onClick={handleDelete} autoFocus>
+                  Delete
+               </Button>
+            </DialogActions>
          </Dialog>
       </div>
    );
