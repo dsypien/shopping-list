@@ -15,13 +15,11 @@ export function createShoppingListItem (shoppingListItem) {
 
 export function handleAddItem (shoppingListItem) {
    return (dispatch) => {
-      addListItem(shoppingListItem)
+      return addListItem(shoppingListItem)
          .then( ({data}) => {
             dispatch(createShoppingListItem(data));
+            dispatch(handleGetShoppingList(1));
          });
-      
-      // Newly added item will be first item on first page
-      return dispatch(handleGetShoppingList(1));
    }
 }
 
@@ -73,13 +71,11 @@ export function handleDeleteItem (id, page) {
    return (dispatch, getState) => {
       const { currentPage } = getState().pagination;
 
-      deleteListItem(id)
+      return deleteListItem(id)
          .then( () => {
             dispatch(deleteShoppingListItem(id));
+            dispatch(handleGetShoppingList(currentPage));
          });
-      
-      // now that item is deleted, get the items that should be on current page
-      return dispatch(handleGetShoppingList(currentPage));
    }
 }
 
