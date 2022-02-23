@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import ShoppingListItem from "./ShoppingListItem";
 import Pagination from '@mui/material/Pagination';
 import { handleGetShoppingList } from "../actions/shoppingList";
-
+import { CircularProgressß } from "@mui/material";
 
 const ShoppingList = (props) => {   
    const { list, pagination } = props;
@@ -17,7 +17,9 @@ const ShoppingList = (props) => {
    }
 
    const onPaginationClick = (event, value) => {
-      props.dispatch(handleGetShoppingList(value));
+      if(value !== currentPage){
+         props.dispatch(handleGetShoppingList(value));
+      }
    }
 
    useEffect(()=> {
