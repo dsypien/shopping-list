@@ -24,12 +24,15 @@ app.post('/shoppingList', (req, res) => {
 });
 
 app.get('/shoppingList', async (req, res) => {
-   const pageSize = 3;
-   let page = parseInt(req.query.page) || 0;
+   const pageSize = 5;
+   let page = parseInt(req.query.page) || 1;
 
    ShoppingList.findAndCountAll({
       limit: pageSize,
-      offset: page
+      offset: (page - 1) * pageSize,
+      order: [
+        ["updatedAt", "DESC"]
+      ]
    })
       .then( list => {
          res.json({
