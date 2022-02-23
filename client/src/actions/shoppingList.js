@@ -69,12 +69,19 @@ export function deleteShoppingListItem (id) {
 
 export function handleDeleteItem (id, page) {
    return (dispatch, getState) => {
-      const { currentPage } = getState().pagination;
+      const { currentPage, pageSize, totalItems} = getState().pagination;
+      // calculate how many pages will be left after we remove an item
+      const newTotalPages = Math.ceil((totalItems - 1)/pageSize);
 
       return deleteListItem(id)
          .then( () => {
             dispatch(deleteShoppingListItem(id));
-            dispatch(handleGetShoppingList(currentPage));
+            if (currentPage > newTotalPages) {
+               dispatch(handleGetShoppingList(newTotalPages));
+            } else {
+               dispatch(handleGetShoppingList(currentPage));
+            }
+            
          });
    }
 }
