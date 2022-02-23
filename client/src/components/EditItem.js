@@ -18,6 +18,7 @@ const EditItem = (props) => {
    const [purchased, setPurchased] = useState(item.purchased || false);
 
    const quantityOptions = [{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}];
+   const characterLimit = 100;
 
    const onSaveItem = () => {
       props.dispatch(handleEditItem({
@@ -56,7 +57,9 @@ const EditItem = (props) => {
             value={description}
             onChange={(e) => setDescription(e.target.value) }
             variant="outlined"
+            inputProps={{maxLength: 100}}
             autoComplete="off" />
+         <p className="character-counter">{`${description.length}/${characterLimit}`}</p>
          <Dropdown
             name="quantity"
             label="How many?"
