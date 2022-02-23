@@ -69,6 +69,7 @@ const EditItem = (props) => {
          <FormControlLabel 
             name="purchased"
             label="Purchased"
+            className="faded-text"
             control={<Checkbox
                onClick={(e) => setPurchased(e.target.checked)}
                checked={purchased}/>}/>

@@ -167,6 +167,10 @@ code {
   align-items: center;
 }
 
+.faded-text {
+  color: rgba(0, 0, 0, 0.6)
+}
+
 button {
   text-transform: none!important;
 }
