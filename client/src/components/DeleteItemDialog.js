@@ -5,7 +5,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import { connect } from 'react-redux';
 import { handleDeleteItem } from '../actions/shoppingList';
 
@@ -28,7 +28,7 @@ const DeleteItemDialog = (props) => {
 
    return (
       <div>
-         <DeleteIcon onClick={handleClickOpen} />
+         <DeleteOutlineOutlinedIcon onClick={handleClickOpen} />
          <Dialog
          open={open}
          onClose={handleClose}

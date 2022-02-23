@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Checkbox } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
+import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import DeleteItemDialog from "./DeleteItemDialog";
@@ -51,7 +50,7 @@ const ShoppingListItem = (props) => {
                <div className="item-description">{item.description}</div>                        
             </div>
             <div className="right-container">
-               <EditIcon onClick={() => {onEditItem()}}/>
+               <ModeEditOutlineOutlinedIcon onClick={() => {onEditItem()}}/>
                <DeleteItemDialog id={item.id}/>
             </div>
          </div>
