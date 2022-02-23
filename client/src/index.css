@@ -162,6 +162,7 @@ code {
 
 .right-container {
   width: 96px;
+  min-width: 96px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -188,4 +189,15 @@ button {
 .flex-container {
   display: flex;
   margin: 12px;
+}
+
+#circular-progress {
+  margin: 0 auto;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 450px;
 }

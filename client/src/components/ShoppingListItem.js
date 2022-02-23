@@ -21,7 +21,6 @@ const ShoppingListItem = (props) => {
    }, [props.item.purchased])
 
    const onTogglePurchase = () => {  
-      //setPurchased(prevPurchased => !prevPurchased)
       const { id, itemName, description, quantity } = item;
       props.dispatch(handleEditItem({
          id,
