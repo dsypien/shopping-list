@@ -161,11 +161,10 @@ code {
 }
 
 .right-container {
-  width: 24px;
+  width: 96px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
-  margin: 10px;
 }
 
 button {
