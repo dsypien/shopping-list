@@ -42,9 +42,9 @@ export function deleteListItem (id) {
    });
 }
 
-export function getShoppingList () {
+export function getShoppingList (pageNum) {
    return new Promise( (res, rej) => {
-      axios.get("http://localhost:3001/shoppinglist")
+      axios.get(`http://localhost:3001/shoppinglist?page=${pageNum}`)
          .then( list => {
             res(list);
          })

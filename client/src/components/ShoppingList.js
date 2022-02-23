@@ -1,16 +1,28 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ShoppingListItem from "./ShoppingListItem";
+import Pagination from '@mui/material/Pagination';
+import { handleGetShoppingList } from "../actions/shoppingList";
+
 
 const ShoppingList = (props) => {   
-   const {list} = props;
+   const { list, pagination } = props;
+   const [currentPage, setCurrentPage] = useState(props.pagination.currentPage);
    const navigate = useNavigate();
 
    const onAddItem = () => {
       navigate("/add");
    }
+
+   const onPaginationClick = (event, value) => {
+      props.dispatch(handleGetShoppingList(value));
+   }
+
+   useEffect(()=> {
+      setCurrentPage(props.pagination.currentPage)
+   }, [props.pagination.currentPage])
 
    return (
       <>
@@ -27,20 +39,21 @@ const ShoppingList = (props) => {
             {list && list.map(item => (
                <ShoppingListItem key={item.id} item={item} />
             ))}
-         </div>         
+         </div>      
+         <Pagination 
+            style={{display: "flex", justifyContent: "center"}}
+            count={pagination.totalPages} 
+            page={currentPage}
+            onChange={onPaginationClick}
+            color="primary" />
       </>
    )
 }
 
-function mapStateToProps ({shoppingList}) {
-   if(shoppingList) {
-      const list = Object.values(shoppingList);
-      return {
-         list,
-      }
-   }
+function mapStateToProps ({shoppingList, pagination}) {
    return {
-   
+      list: Object.values(shoppingList),
+      pagination,
    }
 }
 
