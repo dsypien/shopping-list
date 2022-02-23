@@ -15,10 +15,13 @@ export function createShoppingListItem (shoppingListItem) {
 
 export function handleAddItem (shoppingListItem) {
    return (dispatch) => {
-      return addListItem(shoppingListItem)
+      addListItem(shoppingListItem)
          .then( ({data}) => {
             dispatch(createShoppingListItem(data));
          });
+      
+      // Newly added item will be first item on first page
+      return dispatch(handleGetShoppingList(1));
    }
 }
 
@@ -30,9 +33,9 @@ export function retrieveShoppingList (shoppingList, pagination) {
    };
 }
 
-export function handleGetShoppingList () {
+export function handleGetShoppingList (pageNum) {
    return (dispatch) => {
-      return getShoppingList()
+      return getShoppingList(pageNum)
          .then( res => {
             const { 
                pagination,
@@ -66,12 +69,17 @@ export function deleteShoppingListItem (id) {
    }
 } 
 
-export function handleDeleteItem (id) {
-   return (dispatch) => {
-      return deleteListItem(id)
+export function handleDeleteItem (id, page) {
+   return (dispatch, getState) => {
+      const { currentPage } = getState().pagination;
+
+      deleteListItem(id)
          .then( () => {
             dispatch(deleteShoppingListItem(id));
          });
+      
+      // now that item is deleted, get the items that should be on current page
+      return dispatch(handleGetShoppingList(currentPage));
    }
 }
 
