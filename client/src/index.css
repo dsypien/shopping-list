@@ -107,6 +107,20 @@ code {
   padding-left: .33rem!important;
 }
 
+.character-counter {
+  color: rgba(0, 0, 0, 0.6);
+    font-family: "Roboto","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 0.75rem;
+    line-height: 1.66;
+    letter-spacing: 0.03333em;
+    text-align: right;
+    margin-top: -35px;
+    margin-right: 14px;
+    margin-bottom: 15px;
+    margin-left: 14px;
+}
+
 .shopping-list {
   margin: 20px
 }

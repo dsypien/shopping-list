@@ -15,6 +15,7 @@ class AddItem extends Component {
       navigateDashboard : false
    }
 
+   characterLimit = 100;
    quantityOptions = [{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}]
 
    setInputValue = (e) => {
@@ -72,7 +73,9 @@ class AddItem extends Component {
                value={this.state.description}
                onChange={(e) => this.setInputValue(e) }
                variant="outlined"
+               inputProps={{maxLength: 100}}
                autoComplete="off" />
+            <p class="character-counter">{`${this.state.description.length}/${this.characterLimit}`}</p>
             <Dropdown
                name="quantity"
                label="How many?"
