@@ -55,7 +55,7 @@ class AddItem extends Component {
       return (
          <div className="item-form">
             <div className="item-form-h3">Add an Item</div>
-            <div className="item-form-h4">Add your new item below.</div>
+            <div className="item-form-h4">Add your new item below</div>
             <TextField
                style={{width:"100%", margin: "10px 0px"}}
                name="itemName"
@@ -75,7 +75,7 @@ class AddItem extends Component {
                variant="outlined"
                inputProps={{maxLength: 100}}
                autoComplete="off" />
-            <p class="character-counter">{`${this.state.description.length}/${this.characterLimit}`}</p>
+            <p className="character-counter">{`${this.state.description.length}/${this.characterLimit}`}</p>
             <Dropdown
                name="quantity"
                label="How many?"
