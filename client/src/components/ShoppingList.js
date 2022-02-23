@@ -5,11 +5,11 @@ import { useNavigate } from "react-router-dom";
 import ShoppingListItem from "./ShoppingListItem";
 import Pagination from '@mui/material/Pagination';
 import { handleGetShoppingList } from "../actions/shoppingList";
-import { CircularProgressß } from "@mui/material";
 
 const ShoppingList = (props) => {   
    const { list, pagination } = props;
    const [currentPage, setCurrentPage] = useState(props.pagination.currentPage);
+
    const navigate = useNavigate();
 
    const onAddItem = () => {
@@ -23,7 +23,7 @@ const ShoppingList = (props) => {
    }
 
    useEffect(()=> {
-      setCurrentPage(props.pagination.currentPage)
+      setCurrentPage(props.pagination.currentPage);
    }, [props.pagination.currentPage])
 
    return (
