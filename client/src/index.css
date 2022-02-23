@@ -57,6 +57,25 @@ code {
   border-radius: 0.25rem;
 }
 
+.empty-container {
+  width: 100%;
+  max-width: 600px;
+  height: 290px;
+  margin: 100px auto;
+  border: 1px solid #C6C6C6;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;  
+  flex-direction: column;
+}
+
+.empty-shopping-list {
+  width: 100%;
+  justify-content: center;
+}
+
 .purchased {
   background-color: #D5DFE92B;
   text-decoration: line-through!important;
@@ -74,6 +93,10 @@ code {
 .item-description {
   color: #555;
   margin: 10px 0px;
+}
+
+.mb-4 {
+  margin-bottom: 1.33rem!important;
 }
 
 .mb-3 {

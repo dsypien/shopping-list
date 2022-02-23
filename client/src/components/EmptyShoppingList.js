@@ -10,14 +10,14 @@ export default function EmptyShoppingList () {
    }
 
    return (
-      <>
-         <h3>Your shopping list is empty :(</h3>)
+      <div className="empty-container">
+         <div className="item-form-h3 mb-4">Your shopping list is empty :(</div>
          <Button 
             size="large"
             variant="contained"
             onClick={onAddItem}>
             Add your first Item
          </Button>
-      </>
+      </div>      
    )
 }
