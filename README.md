@@ -1,5 +1,3 @@
-[![Edit shopping-list](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/embed/strange-oskar-36rc9?fontsize=14&hidenavigation=1&theme=dark)
-
 # Shopping List
 "Shopping List" is single page app that allows a user to keep track of their shopping list.  This project utilizes React, Redux & Material-UI on the frontend and Node.js, Express, SQLlite3 on the backend.
 
