@@ -13,23 +13,43 @@ const EditItem = (props) => {
    const item = props.shoppingList[id];
    const navigate = useNavigate();
    const [itemName, setItemName] = useState(item.itemName || ""); 
+   const [itemNameError, setItemNameError] = useState(""); 
    const [description, setDescription] = useState(item.description || ""); 
    const [quantity, setQuantity] = useState(item.quantity || ""); 
+   const [quantityError, setQuantityError] = useState(""); 
    const [purchased, setPurchased] = useState(item.purchased || false);
 
    const quantityOptions = [{value: 1, text: 1}, {value: 2, text: 2}, {value: 3, text: 3}];
    const characterLimit = 100;
 
    const onSaveItem = () => {
-      props.dispatch(handleEditItem({
-         id,
-         itemName,
-         description,
-         quantity,
-         purchased,
-      }));
+      if (validateForm()) {
+         props.dispatch(handleEditItem({
+            id,
+            itemName,
+            description,
+            quantity,
+            purchased,
+         }));
 
-      navigate("/");
+         navigate("/");
+      }       
+   }
+
+   const validateForm = () => {
+      let isValid = true;
+
+      if(itemName.trim() === "") {
+         setItemNameError("Please enter an item.");
+         isValid = false;
+      }
+
+      if(quantity === "") {
+         setItemNameError("Please select a quantity.");
+         isValid = false;
+      }
+
+      return isValid;
    }
 
    const onCancel = () => {
@@ -47,6 +67,9 @@ const EditItem = (props) => {
             value={itemName}
             onChange={(e) => setItemName(e.target.value) }
             variant="outlined"
+            required
+            error={itemNameError.length > 0}
+            helperText={itemNameError}
             autoComplete="off" />
          <TextField
             style={{width:"100%", margin: "10px 0px"}}
@@ -65,6 +88,9 @@ const EditItem = (props) => {
             label="How many?"
             value={quantity}
             options={quantityOptions}
+            required={true}
+            error={itemNameError.length > 0}
+            helperText={itemNameError}
             handleChange={(e) => setQuantity(e.target.value)}/>
          <FormControlLabel 
             name="purchased"

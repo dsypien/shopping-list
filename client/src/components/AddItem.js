@@ -10,8 +10,10 @@ class AddItem extends Component {
    state = {
       id: this.props.id || null,
       itemName: this.props.itemName || "",
+      itemNameError: "",
       description: this.props.description || "",
       quantity: this.props.quantity || "",
+      quantityError: "",
       navigateDashboard : false
    }
 
@@ -31,16 +33,38 @@ class AddItem extends Component {
    }
 
    onAddItem = () => {
-      const { itemName, description, quantity, purchased } = this.state;
+      if(this.validateForm()){
+         const { itemName, description, quantity } = this.state;
 
-      this.props.dispatch(handleAddItem({
-         itemName,
-         description,
-         quantity,
-         purchased: false
-      }));
+         this.props.dispatch(handleAddItem({
+            itemName,
+            description,
+            quantity,
+            purchased: false
+         }));
 
-      this.setState({navigateDashboard: true});
+         this.setState({navigateDashboard: true});
+      }      
+   }
+
+   validateForm = () => {
+      let isValid = true;
+
+      if(this.state.itemName.trim() === "") {
+         this.setState({
+            itemNameError: "Please enter an item."
+         });
+         isValid = false;
+      }
+
+      if(this.state.quantity === "") {
+         this.setState({
+            quantityError: "Please select a quantity."
+         })
+         isValid = false;
+      }
+
+      return isValid;
    }
 
    onCancel = () => {
@@ -56,13 +80,16 @@ class AddItem extends Component {
          <div className="item-form">
             <div className="item-form-h3">Add an Item</div>
             <div className="item-form-h4">Add your new item below</div>
-            <TextField
+            <TextField               
                style={{width:"100%", margin: "10px 0px"}}
                name="itemName"
                label="Item Name"
                value={this.state.itemName}
                onChange={(e) => this.setInputValue(e) }
                variant="outlined"
+               required
+               error={this.state.itemNameError.length > 0}
+               helperText={this.state.itemNameError}
                autoComplete="off" />
             <TextField
                style={{width:"100%", margin: "10px 0px"}}
@@ -77,10 +104,13 @@ class AddItem extends Component {
                autoComplete="off" />
             <p className="character-counter">{`${this.state.description.length}/${this.characterLimit}`}</p>
             <Dropdown
-               name="quantity"
-               label="How many?"
+               name="quantity"               
+               label="How many?"               
                value={this.state.quantity}
                options={this.quantityOptions}
+               required={true}
+               error={this.state.itemNameError.length > 0}
+               helperText={this.state.itemNameError}
                handleChange={(e) => this.setInputValue(e)}
             />
             <div className="btn-container-right">
