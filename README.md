@@ -7,7 +7,7 @@ The app allows the user to
    * Remove Shopping Items
    * Mark Items as purchased
 
-![][README_demo.gif]
+![](README_demo.gif)
 
 ## Getting Started
 
