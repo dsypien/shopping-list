@@ -34,12 +34,12 @@ const Dashboard = (props) => {
    )
 }
 
-function mapStateToProps ({shoppingList, loading}) {
+function mapStateToProps ({shoppingList, appStatus}) {
    const itemCount = Object.keys(shoppingList).length;
 
    return {
       itemCount,
-      loading,
+      loading: appStatus.loading
    }
 }
 

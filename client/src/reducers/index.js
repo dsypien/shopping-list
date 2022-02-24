@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import shoppingListReducer from "./shoppingList";
 import paginationReducer from "./pagination";
-import loadingReducer from "./loading";
+import appStatusReducer from "./appStatus";
 
 export default combineReducers({
    shoppingList: shoppingListReducer,
    pagination: paginationReducer,
-   loading: loadingReducer
+   appStatus: appStatusReducer
 })

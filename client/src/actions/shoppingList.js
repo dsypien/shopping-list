@@ -1,12 +1,10 @@
 import { addListItem, editListItem, deleteListItem, getShoppingList } from "../services/api";
-import { showLoading, hideLoading } from "./loading";
+import { showLoading, hideLoading, showAlertStatus, hideAlertStatus } from "./appStatus";
 export const CREATE_SHOPPING_LIST_ITEM = "CREATE_SHOPPING_LIST_ITEM";
 export const RETRIEVE_SHOPPING_LIST = "CREATE_SHOPPING_LIST";
 export const UPDATE_SHOPPING_LIST_ITEM = "UPDATE_SHOPPING_LIST_ITEM";
 export const DELETE_SHOPPING_LIST_ITEM = "DELETE_SHOPPING_LIST_ITEM";
 export const TOGGLE_ITEM_PURCHASED = "TOGGLE_ITEM_PURCHASED";
-
-
 
 
 export function createShoppingListItem (shoppingListItem) {
@@ -22,6 +20,10 @@ export function handleAddItem (shoppingListItem) {
          .then( ({data}) => {
             dispatch(createShoppingListItem(data));
             dispatch(handleGetShoppingList(1));
+            dispatch(hideAlertStatus());
+         })
+         .catch(() => {
+            dispatch(showAlertStatus("Could not reach server, please contact your network administrator."));
          });
    }
 }
@@ -43,6 +45,10 @@ export function handleGetShoppingList (pageNum) {
                pagination,
                rows,} = res.data;
             dispatch(retrieveShoppingList(rows, pagination));
+            dispatch(hideAlertStatus());
+         })
+         .catch(() => {
+            dispatch(showAlertStatus("Could not reach server, please contact your network administrator."));
          })
          .finally(() => {
             dispatch(hideLoading());
@@ -63,7 +69,11 @@ export function handleEditItem (shoppingListItem) {
       return editListItem(shoppingListItem)
          .then( () => {
             dispatch(updateShoppingListItem(shoppingListItem));
+            dispatch(hideAlertStatus());
          })
+         .catch(() => {
+            dispatch(showAlertStatus("Could not reach server, please contact your network administrator."));
+         });
    }
 }
 
@@ -87,8 +97,11 @@ export function handleDeleteItem (id, page) {
                dispatch(handleGetShoppingList(newTotalPages));
             } else {
                dispatch(handleGetShoppingList(currentPage));
-            }
-            
+            }      
+            dispatch(hideAlertStatus());      
+         })
+         .catch(() => {
+            dispatch(showAlertStatus("Could not reach server, please contact your network administrator."));
          });
    }
 }

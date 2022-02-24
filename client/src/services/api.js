@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function addListItem (item) {
    return new Promise( (res, rej) => {
-      axios.post("http://localhost:3001/shoppinglist", item)
+      axios.post("http://localhost:3001/shoppinglist", item, {timeout: 15000})
       .then( apiRes => {
          res(apiRes);
       })
@@ -16,7 +16,7 @@ export function addListItem (item) {
 
 export function editListItem (item) {
    return new Promise ( (res, rej) => {
-      axios.put(`http://localhost:3001/shoppinglist/${item.id}`, item)
+      axios.put(`http://localhost:3001/shoppinglist/${item.id}`, item, {timeout: 15000})
          .then( apiRes => {
             res(apiRes);
          })
@@ -30,7 +30,7 @@ export function editListItem (item) {
 
 export function deleteListItem (id) {
    return new Promise ( (res, rej) => {
-      axios.delete(`http://localhost:3001/shoppinglist/${id}`)
+      axios.delete(`http://localhost:3001/shoppinglist/${id}`, {timeout: 15000})
          .then( apiRes => {
             res(apiRes);
          })
@@ -44,7 +44,7 @@ export function deleteListItem (id) {
 
 export function getShoppingList (pageNum) {
    return new Promise( (res, rej) => {
-      axios.get(`http://localhost:3001/shoppinglist?page=${pageNum}`)
+      axios.get(`http://localhost:3001/shoppinglist?page=${pageNum}`, {timeout: 15000})
          .then( list => {
             res(list);
          })

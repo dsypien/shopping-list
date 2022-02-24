@@ -19,7 +19,7 @@ function App(props) {
   return (
     <Router>
       <div className="App">
-        <Nav title="Shopping Cart"/>
+        <Nav title="Shopping Cart"/>        
         <Routes>
           <Route path="/" exact element={<Dashboard />}/>
           <Route path="/add" element={<AddItem />}/>
