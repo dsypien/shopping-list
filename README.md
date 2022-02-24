@@ -20,7 +20,7 @@ To get the project up and running
 2. Server setup and launch:
 ```bash
   $ cd shopping-list
-  $ npm install && npm run
+  $ npm install && npm start
 ```
 
 3. Client setup and launch:
