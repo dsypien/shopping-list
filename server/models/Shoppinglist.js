@@ -1,4 +1,3 @@
-// const { DataTypes } = require('sequelize/types');
 const sequelize = require('../db');
 const { Model, DataTypes } = require('sequelize');
 

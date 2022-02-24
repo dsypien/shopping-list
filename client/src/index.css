@@ -9,6 +9,20 @@ code {
   font-family:  'Dosis', 'Nunito', sans-serif; 
 }
 
+.custom-font, 
+.MuiButton-root, 
+.MuiTypography-root
+.MuiInputLabel-root
+.MuiFormControl-root
+.MuiPaper-root,
+.MuiInputBase-input,
+.MuiOutlinedInput-notchedOutline,
+.MuiOutlinedInput-root,
+#alert-dialog-title,
+#alert-dialog-description {
+  font-family:  'Dosis', 'Nunito', sans-serif !important; 
+}
+
 .item-form {
   max-width: 500px;
   margin: 35px auto 25px;
